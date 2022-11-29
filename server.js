@@ -183,13 +183,13 @@ const employeeAdd = async () => {
             },
             {
                 name: 'employeeManagerId',
-                type: 'list',
-                choices: managers.map((manager) => {
-                    return {
-                        name: manager.first_name + " " + manager.last_name,
-                        value: manager.id
-                    }
-                }),
+                type: 'input',
+                // choices: managers.map((manager) => {
+                //     return {
+                //         name: manager.first_name + " " + manager.last_name,
+                //         value: manager.id
+                //     }
+                // }),
                 message: "What is this employee's manager's ID?"
             }
         ])
