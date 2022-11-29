@@ -171,13 +171,14 @@ const employeeAdd = async () => {
             },
             {
                 name: 'employeeRoleId',
-                type: 'list',
-                choices: roles.map((role) => {
-                    return {
-                        name: role.title,
-                        value: role.id
-                    }
-                }),
+                type: 'input',
+                // type: 'list',
+                // choices: roles.map((role) => {
+                //     return {
+                //         name: role.title,
+                //         value: role.id
+                //     }
+                // }),
                 message: "What is this employee's role ID?"
             },
             {
