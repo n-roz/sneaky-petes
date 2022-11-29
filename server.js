@@ -150,7 +150,6 @@ const roleView = async () => {
     };
 }
 
-
 // add a new employee
 const employeeAdd = async () => {
     try {
@@ -195,7 +194,7 @@ const employeeAdd = async () => {
             }
         ])
 
-        let result = await connection.query("INSERT INTO employee SET ?", {
+        let result = await con.query("INSERT INTO employee SET ?", {
             first_name: answer.firstName,
             last_name: answer.lastName,
             role_id: (answer.employeeRoleId),
@@ -224,7 +223,7 @@ const departmentAdd = async () => {
             }
         ]);
 
-        let result = await connection.query("INSERT INTO department SET ?", {
+        let result = await con.query("INSERT INTO department SET ?", {
             department_name: answer.deptName
         });
 
@@ -242,7 +241,7 @@ const roleAdd = async () => {
     try {
         console.log('Role Add');
 
-        let departments = await connection.query("SELECT * FROM department")
+        let departments = await con.query("SELECT * FROM department")
 
         let answer = await inquirer.prompt([
             {
@@ -274,7 +273,7 @@ const roleAdd = async () => {
                 chosenDepartment = departments[i];
             };
         }
-        let result = await connection.query("INSERT INTO role SET ?", {
+        let result = await con.query("INSERT INTO role SET ?", {
             title: answer.title,
             salary: answer.salary,
             department_id: answer.departmentId
@@ -294,7 +293,7 @@ const employeeUpdate = async () => {
     try {
         console.log('Employee Update');
         
-        let employees = await connection.query("SELECT * FROM employee");
+        let employees = await con.query("SELECT * FROM employee");
 
         let employeeSelection = await inquirer.prompt([
             {
@@ -310,7 +309,7 @@ const employeeUpdate = async () => {
             }
         ]);
 
-        let roles = await connection.query("SELECT * FROM role");
+        let roles = await con.query("SELECT * FROM role");
 
         let roleSelection = await inquirer.prompt([
             {
@@ -326,7 +325,7 @@ const employeeUpdate = async () => {
             }
         ]);
 
-        let result = await connection.query("UPDATE employee SET ? WHERE ?", [{ role_id: roleSelection.role }, { id: employeeSelection.employee }]);
+        let result = await con.query("UPDATE employee SET ? WHERE ?", [{ role_id: roleSelection.role }, { id: employeeSelection.employee }]);
 
         console.log(`The role was successfully updated.\n`);
         initialAction();
@@ -339,6 +338,6 @@ const employeeUpdate = async () => {
 
 
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`);
+// });
