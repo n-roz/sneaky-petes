@@ -13,17 +13,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Connect to database
-const db = mysql.createConnection(
+const con = mysql.createConnection(
     {
       host: 'localhost',
       // Your MySQL username,
       user: 'root',
       // Your MySQL password
-      password: '',
+      password: 'ZB0sdHf6',
       database: 'employee_DB'
     },
-    console.log('Connected to the employees database.')
+    console.log('Connected to the employee database.')
   );
+
+  con.query = util.promisify(con.query);
+
+  con.connect(function (err) {
+      if (err) throw err;
+      initialAction();
+  })
+  
 
 // Default response for any other request (Not Found)
 app.use((req, res) => {
@@ -79,7 +87,7 @@ const initialAction = async () => {
                 break
 
             case 'Exit':
-                connection.end();
+                con.end(); //connection.end();
                 break;
         };
     } catch (err) {
@@ -93,7 +101,7 @@ const employeeView = async () => {
     console.log('Employee View');
     try {
         let query = 'SELECT * FROM employee';
-        connection.query(query, function (err, res) {
+        con.query(query, function (err, res) {
             if (err) throw err;
             let employeeArray = [];
             res.forEach(employee => employeeArray.push(employee));
@@ -111,7 +119,7 @@ const departmentView = async () => {
     console.log('Department View');
     try {
         let query = 'SELECT * FROM department';
-        connection.query(query, function (err, res) {
+        con.query(query, function (err, res) {
             if (err) throw err;
             let departmentArray = [];
             res.forEach(department => departmentArray.push(department));
@@ -129,7 +137,7 @@ const roleView = async () => {
     console.log('Role View');
     try {
         let query = 'SELECT * FROM role';
-        connection.query(query, function (err, res) {
+        con.query(query, function (err, res) {
             if (err) throw err;
             let roleArray = [];
             res.forEach(role => roleArray.push(role));
@@ -148,9 +156,9 @@ const employeeAdd = async () => {
     try {
         console.log('Employee Add');
 
-        let roles = await connection.query("SELECT * FROM role");
+        let roles = await con.query("SELECT * FROM role");
 
-        let managers = await connection.query("SELECT * FROM employee");
+        let managers = await con.query("SELECT * FROM employee");
 
         let answer = await inquirer.prompt([
             {
