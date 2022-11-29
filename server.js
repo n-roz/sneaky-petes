@@ -5,7 +5,6 @@ const inquirer = require('inquirer');
 const consoleTable = require('console.table');
 const util = require('util');
 
-// const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Express middleware
@@ -172,25 +171,11 @@ const employeeAdd = async () => {
             {
                 name: 'employeeRoleId',
                 type: 'input',
-                // type: 'list',
-                // choices: roles.map((role) => {
-                //     return {
-                //         name: role.title,
-                //         value: role.id
-                //     }
-                // }),
                 message: "What is this employee's role ID?"
             },
             {
                 name: 'employeeManagerId',
                 type: 'input',
-                // type: 'list',
-                // choices: managers.map((manager) => {
-                //     return {
-                //         name: manager.first_name + " " + manager.last_name,
-                //         value: manager.id
-                //     }
-                // }),
                 message: "What is this employee's manager's ID?"
             }
         ])
@@ -336,9 +321,3 @@ const employeeUpdate = async () => {
         initialAction();
     };
 }
-
-
-
-// app.listen(PORT, () => {
-//   console.log(`Server running on port ${PORT}`);
-// });

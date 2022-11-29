@@ -1,29 +1,32 @@
-<!-- Set up the Node.js application with MySQL. Connect to the MySQL database in the Node.js application.
-Build the database calls. Use mysql2 to make calls to the database to execute the SQL queries.
-Create the GET routes. Use Express.js to build the GET routes to perform the read operations.
-Create the DELETE route. Use Express.js to build the DELETE routes to perform the delete operations.
-Create the POST route. Use Express.js to build the POST routes to perform the create operations.
-Save your progress with Git. Finally, we’ll need to close the corresponding GitHub issue. -->
+# SQL Challenge: Employee Tracker
 
-<!-- CREATE TABLE employees (
-    id INTEGER AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(30) NOT NULL,
-    last_name VARCHAR(30) NOT NULL,
-    title VARCHAR(30) NOT NULL,
-    department_id INT,
-    salary DECIMAL,
-    manager_id INT
-); -->
-<!-- line 9 in package.json
-// "test": "echo \"Error: no test specified\" && exit 1" -->
+## Description
+A command-line application using Node.js, Inquirer, and MySQL that tracks employees and their employment information.
 
-<!-- Sales, engineering, finance, legal -->
+## User Story
+```
+AS A business owner
+I WANT to be able to view and manage the departments, roles, and employees in my company
+SO THAT I can organize and plan my business
+```
 
-INSERT INTO employees (first_name, last_name, title, department_id, salary, manager_id)
-VALUES 
-('Ronald', 'Firbank', Sales Lead, Sales, 60000, null),
-('Virginia', 'Woolf', Salesperson, Sales, 75000, null);
-;
-
-<!--  "test": "jest",
-    "start": "node server.js" -->
+## Acceptance Criteria
+```
+GIVEN a command-line application that accepts user input
+WHEN I start the application
+THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
+WHEN I choose to view all departments
+THEN I am presented with a formatted table showing department names and department ids
+WHEN I choose to view all roles
+THEN I am presented with the job title, role id, the department that role belongs to, and the salary for that role
+WHEN I choose to view all employees
+THEN I am presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
+WHEN I choose to add a department
+THEN I am prompted to enter the name of the department and that department is added to the database
+WHEN I choose to add a role
+THEN I am prompted to enter the name, salary, and department for the role and that role is added to the database
+WHEN I choose to add an employee
+THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
+WHEN I choose to update an employee role
+THEN I am prompted to select an employee to update and their new role and this information is updated in the database
+```
