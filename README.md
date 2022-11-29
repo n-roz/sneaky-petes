@@ -30,3 +30,28 @@ THEN I am prompted to enter the employee’s first name, last name, role, and ma
 WHEN I choose to update an employee role
 THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 ```
+
+## Installation
+- [ ] Install [Node.js](https://nodejs.org/en/download/) and [MySQL](https://dev.mysql.com/downloads/) if you do not have them.
+- [ ] Clone this repository using
+```
+git@github.com:n-roz/sneaky-petes.git
+```
+- [ ] Update the user password in server.js to your root user password in MySQL.
+- [ ] Install node packages with
+```
+npm install
+```
+- [ ] Create database tables using the queries in schema.sql
+- [ ] Start the application with
+```
+npm start
+```
+## Usage
+- View employees, departments, and roles
+- Add employees, departments, and roles
+- Update employee roles and managers
+- View employees by manager
+
+## Contributions and Questions
+[n-roz on GitHub](https://github.com/n-roz)
