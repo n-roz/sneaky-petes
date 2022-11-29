@@ -5,7 +5,7 @@ const inquirer = require('inquirer');
 const consoleTable = require('console.table');
 const util = require('util');
 
-const PORT = process.env.PORT || 3001;
+// const PORT = process.env.PORT || 3001;
 const app = express();
 
 // Express middleware
@@ -32,7 +32,6 @@ const con = mysql.createConnection(
       initialAction();
   })
   
-
 // Default response for any other request (Not Found)
 app.use((req, res) => {
   res.status(404).end();
