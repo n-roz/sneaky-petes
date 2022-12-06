@@ -3,6 +3,8 @@
 ## Description
 A command-line application using Node.js, Inquirer, and MySQL that tracks employees and their employment information.
 
+[View my video walkthrough here.](https://drive.google.com/file/d/1mnUAOv5tjqYCoBNa1-WgLyWtyb1zrqrX/view)
+
 ## User Story
 ```
 AS A business owner
